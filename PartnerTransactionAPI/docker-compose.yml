@@ -1,0 +1,13 @@
+﻿version: "3.8"
+services:
+  partner-api:
+    build: .
+    image: partnertransactionapi:latest
+    container_name: partnertransactionapi
+    ports:
+      - "5000:80"           # host:container (use Postman to http://localhost:5000)
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./Logs:/app/Logs    # persist logs to host ./Logs
+    restart: unless-stopped
